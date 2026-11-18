@@ -1,0 +1,14 @@
+name: DonjonPlugin
+version: 1.0.0
+main: fr.donjon.DonjonPlugin
+api-version: '26.3'
+description: Menu /donjon avec 3 donjons dans des mondes séparés
+commands:
+  donjon:
+    description: Ouvre le menu des donjons
+    usage: /donjon [retour]
+    permission: donjon.use
+permissions:
+  donjon.use:
+    description: Utiliser /donjon
+    default: true
