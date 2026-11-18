@@ -1,0 +1,28 @@
+name: Build DonjonPlugin
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: DonjonPlugin/pom.xml
+
+      - name: Compilation
+        run: mvn -B clean package
+        working-directory: DonjonPlugin
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DonjonPlugin
+          path: DonjonPlugin/target/DonjonPlugin-*.jar
